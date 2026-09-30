@@ -4,7 +4,7 @@ A local drawing-comparison and electrical coordination app. PDFs and annotations
 
 ## Open the app
 
-Double-click **Start-PDF-DIFF.cmd**, or run `npm start`, then open http://127.0.0.1:4321. Keep the server window open. The app requires Node.js 20.15 or newer; dependencies and the production build are already present in this workspace. If the preview is already running on port 4321, simply open that URL.
+Double-click **Start-PDF-DIFF.cmd**, then open http://127.0.0.1:4321. The launcher installs missing dependencies and creates a missing production build automatically. The first launch needs an internet connection to download packages. Keep the server window open. The app requires Node.js 20.15 or newer. If the preview is already running on port 4321, simply open that URL.
 
 For a fresh checkout: `npm ci`, then `npm run build` and `npm start`.
 
@@ -26,7 +26,7 @@ Shortcuts: **V** select, **C** cloud, **D** device, **N** note, **Ctrl+Z** undo,
 
 - Visual pixel comparison only; no OCR, electrical symbol recognition, automatic alignment, sheet-number matching or electrical-code certification.
 - Matching orientation, scale and registration give the best result. Scans, translation and inconsistent exports can create false-positive regions. Review every suggested cloud.
-- Render comparison at 1,400 pixels wide; exports at 2,200 pixels wide. Large-format drawing detail is therefore limited in the raster export. Original PDFs are never modified.
+- Comparison renders at up to 3,200 pixels wide; PDF exports at up to 6,000 pixels wide, capped at 24 million pixels per page. Zoom up to 600% and use Expand drawing workspace to hide side panels. Exports from Overlay view include red/blue differences with the current sensitivity and blend; Revised and Split views export the revised drawing. Unpaired pages export revised content. Exports are still raster copies. Original PDFs are never modified.
 - Electrical calculations use entered apparent power: `I = VA / V`, or `VA / (sqrt(3) * V)` for balanced three-phase loads. No demand, diversity, continuous-load, breaker, ampacity, voltage-drop or fault-current calculation is implied.
 - Password-protected PDFs must be unlocked before loading. File picker accepts up to 150 MB; browser memory is the practical limit for large drawing sets.
 - Work lives in memory. Save a review before refreshing or closing. Review JSON contains labels and notes, not the source PDFs. Nothing is published.

@@ -3,7 +3,7 @@
 > Local PDF comparison and electrical drawing review app.
 > Read Snapshot and Rules first. The README documents usage and limitations.
 
-**Last updated:** 2026-09-28 · **Profile:** software-app · **Memory schema:** 1
+**Last updated:** 2026-09-30 · **Profile:** software-app · **Memory schema:** 1
 
 ## Snapshot
 - **Status:** Initial implementation complete; source published to a private GitHub repository. Production build and 12 tests pass.
@@ -24,6 +24,11 @@
 - **Related docs:** [README](README.md) contains operation instructions and practical limits.
 
 ## Checkpoints
+### CP-003 · 2026-09-30 · Startup, drawing workspace and overlay exports
+
+- **State:** Launcher installs missing dependencies and builds missing production output on fresh downloads. Comparison renders at up to 3200 pixels wide, exports at up to 6000 pixels wide, with a 24-million-pixel page cap. Expanded workspace hides side panels; zoom supports 600%.
+- **Export:** Overlay exports include red/blue pixel differences using the current sensitivity and blend. Revised and Split exports use the revised sheet. Unpaired pages use revised content; mismatched proportions produce an actionable export error. Cloud visibility is respected.
+- **Evidence:** Production build and 12 tests passed. Browser verified expanded workspace and reported successful sample overlay PDF export; exported PDF pixels were not separately inspected.
 ### CP-002 · 2026-09-28 · Private GitHub source publication
 
 - **State:** Initialized Git for this folder and published the source to `pizzapalmito/PDF-DIFF` as a private repository.
