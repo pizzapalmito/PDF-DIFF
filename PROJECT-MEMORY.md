@@ -24,6 +24,11 @@
 - **Related docs:** [README](README.md) contains operation instructions and practical limits.
 
 ## Checkpoints
+### CP-004 · 2026-09-30 · Automatic Windows requirements setup
+
+- **State:** Added requirements.ps1 and requirements.cmd. Start-PDF-DIFF.cmd runs setup before starting. Setup reuses working Node.js 20.15+ and npm or downloads a compatible official portable Node.js LTS ZIP, verifies SHA-256, and extracts under ignored .runtime/. No machine PATH or installation changes are made.
+- **Dependencies/build:** npm ci --include=dev runs when Vite is missing or the lockfile fingerprint changes. Builds run when missing, packages changed, source inputs are newer, or -Rebuild is requested.
+- **Evidence:** System-runtime setup and repeat setup pass. In an isolated copy with Node.js removed from PATH, official portable Node.js v24.21.0 installed, checksum verified, production build passed, and 12 tests passed. Repeat portable setup reused requirements.
 ### CP-003 · 2026-09-30 · Startup, drawing workspace and overlay exports
 
 - **State:** Launcher installs missing dependencies and builds missing production output on fresh downloads. Comparison renders at up to 3200 pixels wide, exports at up to 6000 pixels wide, with a 24-million-pixel page cap. Expanded workspace hides side panels; zoom supports 600%.

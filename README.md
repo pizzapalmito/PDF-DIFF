@@ -4,9 +4,11 @@ A local drawing-comparison and electrical coordination app. PDFs and annotations
 
 ## Open the app
 
-Double-click **Start-PDF-DIFF.cmd**, then open http://127.0.0.1:4321. The launcher installs missing dependencies and creates a missing production build automatically. The first launch needs an internet connection to download packages. Keep the server window open. The app requires Node.js 20.15 or newer. If the preview is already running on port 4321, simply open that URL.
+Double-click **Start-PDF-DIFF.cmd**, then open http://127.0.0.1:4321. The launcher runs the requirements setup automatically: it checks Node.js and npm, downloads a portable Node.js LTS runtime from nodejs.org into `.runtime/` if a working Node.js 20.15+ installation is missing, verifies the archive SHA-256 checksum, installs locked dependencies (including Vite), and builds the app. No administrator access or separate Vite install is needed. First-time setup needs internet access and a writable project folder. Keep the server window open. If the preview is already running on port 4321, simply open that URL.
 
-For a fresh checkout: `npm ci`, then `npm run build` and `npm start`.
+For setup without launching: double-click **requirements.cmd**, or run `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\requirements.ps1 -Rebuild` from the project folder. If PowerShell is blocked by organizational policy, contact IT. The launcher changes execution policy only for its own PowerShell process; it does not change machine settings. Subsequent launches reuse the runtime and packages, reinstall when the lockfile changes, and rebuild when source files are newer than the build.
+
+For manual setup with an existing Node.js installation: `npm ci --include=dev`, then `npm run build` and `npm start`.
 
 For development: `npm run dev`. Validate with `npm test` and `npm run build`.
 
